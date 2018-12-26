@@ -13,5 +13,5 @@ class IpCheckMiddleware(MiddlewareMixin):
         ip = request.META['REMOTE_ADDR']
         if ip not in settings.ALLOWED_IP:
             if not request.user.is_authenticated:
-                return HttpResponse("Not allowed {}".format(ip))
+                return HttpResponse("Not allowed {}".format(ip), status=403)
         return None
